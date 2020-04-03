@@ -14,7 +14,7 @@ class Entity
 {
 private:
 	ID id;
-	std::vector<std::shared_ptr<Component>> listComponent;
+	std::vector<std::unique_ptr<Component>> listComponent;
 public:
 	Entity();
 
@@ -23,9 +23,3 @@ public:
 
 	//void removeComponent() => how ?
 };
-
-template<class T, class ...Args>
-inline void Entity::addComponent(Args&& ...args)
-{
-	listComponent.push_back(std::make_shared<T>(args));
-}

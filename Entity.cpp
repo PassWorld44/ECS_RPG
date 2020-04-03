@@ -13,3 +13,9 @@ Entity::Entity()
 	this->id = getID();
 }
 
+template<class T, class ...Args>
+inline void Entity::addComponent(Args&& ...args)
+{
+	listComponent.push_back(std::make_shared<T>(args));
+}
+
