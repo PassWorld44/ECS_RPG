@@ -15,12 +15,13 @@ Entity::Entity(ID const& id_g)
 	}
 } */
 
-void Entity::removeComponent(const Component& component) // Pour 1 component
+void Entity::removeComponent(const Component& component) // Pour 1 component //TO DO : resolve this problem
 {
 	// Il cherche si il y a le component dans la liste
 	std::vector<std::unique_ptr<Component>>::iterator it = find_if(listComponent.begin(), listComponent.end(), 
 		[component](std::unique_ptr<Component> ptr) {return component == *ptr;  });
 
-	if (it != listComponent.end()) // si il en trouve un
+	if (it != this->listComponent.end()) // si il en trouve un
 		this->listComponent.erase(it); // on le supprime
 }
+
