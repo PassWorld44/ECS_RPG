@@ -14,15 +14,15 @@ public:
 	ID get_id(); // ok
 };
 
-struct PositionComponent : Component// c'est pas mal pour condenser les informations
+typedef struct PositionComponent : Component// c'est pas mal pour condenser les informations
 {
 	int x;
 	int y;
-};
+} Pos;
 
-/* class positionComponent : public Component 
+class positionComponent : public Component 
 {
-private:
+public:
 	Pos position;
 public:
 	Pos getPosition() const
@@ -31,9 +31,10 @@ public:
 	}
 
 	void update(); // je sais pas trop quoi ...
-}; */
+};
 
 struct imageComponent : public Component // c'est pour afficher une image
 {
+public:
 	std::string path;
 };
