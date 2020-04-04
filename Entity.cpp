@@ -1,21 +1,24 @@
-#include "Entity.h"
-#include "Component.h"
+#include "Headers"
 
-ID getID()
+Entity::Entity(ID const& id_g)
+:id(id_g)
 {
-	static size_t id{ 0 };
-
-	return id++; //return id, then increments it
+	std::cout << "Creation de l'Entity ID : " << id << std::endl;
 }
 
-Entity::Entity()
+void Entity::removeComponent()
 {
-	this->id = getID();
+	// on supprime tous les components
+	for(std::vector<std::unique_ptr<Component>>::iterator it = listComponent.begin(); it != listComponent.end(); it++)
+	{
+		delete it;
+	}
 }
 
-template<class T, class ...Args>
-inline void Entity::addComponent(Args&& ...args)
+void Entity::removeComponent(Component component) // Pour 1 component
 {
-	listComponent.push_back(std::make_shared<T>(args));
+	// Il cherche si il y a le component dans la liste
+	std::vector<std::unique_ptr<Component>>::iterator it = find(listComponent.begin(), listComponent.end(), component);
+	if(it != nullptr) // si il en trouve un
+		delete it; // on le supprime
 }
-
