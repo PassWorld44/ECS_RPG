@@ -21,20 +21,12 @@ public:
 
 class positionComponent : public Component 
 {
-private:
-	Pos position;
 public:
-	Pos getPosition() const
-	{
-		return position;
-	}
-
-	void update(); // je sais pas trop quoi ...
+	Pos position; // position : x, y
 };
 
 class imageComponent : public Component // c'est pour afficher une image
 {
-private:
-	std::string path;
 public:
+	std::string path;
 };
