@@ -1,40 +1,47 @@
 #pragma once
 
 #include "Headers.hpp"
-#include "ID.hpp"
 
 class Component
 {
 private:
 	ID idEntity;
 protected:
-	Component(); // A réfléchir
-	virtual void update(); // je pense
+	Component(ID const& id_g);
 public:
-	ID get_id(); // ok
+	ID getID() const { return idEntity; }
 };
 
-typedef struct PositionComponent : Component// c'est pas mal pour condenser les informations
+// POSITION
+
+typedef struct ComponentPosition
 {
-	int x;
-	int y;
+	int x,
+	int y
 } Pos;
 
-class positionComponent : public Component 
+class componentPosition : public Component
 {
 public:
+	componentPosition(ID const& id_g, int const& x_g, int const& y_g);
 	Pos position;
-public:
-	Pos getPosition() const
-	{
-		return position;
-	}
-
-	void update(); // je sais pas trop quoi ...
 };
 
-struct imageComponent : public Component // c'est pour afficher une image
+// END POSITION
+
+// DIMENSION
+
+typedef struct ComponentDimension
+{
+	int width,
+	int height
+} Dim;
+
+class componentDimension : public Component
 {
 public:
-	std::string path;
+	componentDimension(ID const& id_g, int const& width_g, int const& height_g);
+	Dim dimension;
 };
+
+// END DIMENSION

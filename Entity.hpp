@@ -10,17 +10,17 @@ class Entity
 {
 private:
 	ID id;
-	std::vector<std::unique_ptr<Component>> listComponent;
+	std::map<const char*,std::unique_ptr<Component>> listComponent;
 public:
 	Entity(ID const& id_g);
 
 	template<typename T, typename... Args>
-	void addComponent(Args&&... args);
+	void addComponent(ID id ,Args&&... args);
 
-	//void removeComponent(); // je savais plus si c'était pour 1 ou tous les component alors j'en ai fait deux
-	void removeComponent(const Component& component); // ici c'est juste pour 1 component
+	template<typename T> void inline removeComponent();
 
-	//Component& getComponent();  //pour l'init
+	template<typename T>
+	T* getComponent() const;  //pour l'init
 	//pareil ici faut trouver un moyen de sort les components par type si y'en a 1 max de chaque type
 };
 

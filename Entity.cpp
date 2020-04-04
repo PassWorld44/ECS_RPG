@@ -9,25 +9,19 @@ Entity::Entity(ID const& id_g)
 template<typename T, typename ...Args>
 void Entity::addComponent(Args&& ...args)
 {
-	listComponent.push_back(std::make_unique<T>(args));
+	listComponent.emplace(std::pair<typeid(T),std::make_unique<T>(id,args)>);
 }
 
-/*void Entity::removeComponent()
+template<typename T> 
+void inline Entity::removeComponent()
 {
-	// on supprime tous les components
-	for(std::vector<std::unique_ptr<Component>>::iterator it = listComponent.begin(); it != listComponent.end(); it++)
-	{
-		delete it;
-	}
-} */
-
-void Entity::removeComponent(const Component& component) // Pour 1 component //TO DO : resolve this problem
-{
-	// Il cherche si il y a le component dans la liste
-	std::vector<std::unique_ptr<Component>>::iterator it = find_if(listComponent.begin(), listComponent.end(), 
-		[component](std::unique_ptr<Component> ptr) {return component == *ptr;  });
-
-	if (it != this->listComponent.end()) // si il en trouve un
-		this->listComponent.erase(it); // on le supprime
+	std::map<const char*,std::unique_ptr<Component>>::iterator it = listComponent.find(typeid(T));
+	listComponent.erase(it);
 }
 
+template<typename T>
+T* Entity::getComponent() const
+{
+	std::map<const char*, std::unique_ptr<Component>>::iterator it = listComponent.find(typeid(T));
+	return &(it->second);
+}
