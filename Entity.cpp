@@ -6,6 +6,12 @@ Entity::Entity(ID const& id_g)
 	std::cout << "Creation de l'Entity ID : " << id << std::endl;
 }
 
+template<typename T, typename ...Args>
+void Entity::addComponent(Args&& ...args)
+{
+	listComponent.push_back(std::make_unique<T>(args));
+}
+
 /*void Entity::removeComponent()
 {
 	// on supprime tous les components

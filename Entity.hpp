@@ -19,10 +19,9 @@ public:
 
 	//void removeComponent(); // je savais plus si c'était pour 1 ou tous les component alors j'en ai fait deux
 	void removeComponent(const Component& component); // ici c'est juste pour 1 component
+
+	//Component& getComponent();  //pour l'init
+	//pareil ici faut trouver un moyen de sort les components par type si y'en a 1 max de chaque type
 };
 
-template<typename T, typename ...Args>
-inline void Entity::addComponent(Args&& ...args)
-{
-	listComponent.push_back(std::make_unique<T>(args));
-}
+

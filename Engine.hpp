@@ -4,7 +4,6 @@
 #include "Headers.hpp"
 #include "ID.hpp"
 #include "Component.hpp"
-
 class Engine
 {
 private:
