@@ -1,12 +1,7 @@
 #pragma once
 
 #include "Headers.hpp"
-
-typedef struct PositionComponent // c'est pas mal pour condenser les informations
-{
-	int x,
-	int y
-} Pos;
+#include "ID.hpp"
 
 class Component
 {
@@ -19,7 +14,13 @@ public:
 	ID get_id(); // ok
 };
 
-class positionComponent : public Component 
+struct PositionComponent : Component// c'est pas mal pour condenser les informations
+{
+	int x;
+	int y;
+};
+
+/* class positionComponent : public Component 
 {
 private:
 	Pos position;
@@ -30,11 +31,9 @@ public:
 	}
 
 	void update(); // je sais pas trop quoi ...
-};
+}; */
 
-class imageComponent : public Component // c'est pour afficher une image
+struct imageComponent : public Component // c'est pour afficher une image
 {
-private:
 	std::string path;
-public:
 };
