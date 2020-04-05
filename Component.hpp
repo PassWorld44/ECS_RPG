@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Headers.hpp"
+#include "ID.hpp"
 
 class Component
 {
@@ -14,12 +15,13 @@ public:
 
 // POSITION
 
-typedef struct ComponentPosition
+typedef struct ComponentPosition// : public Component
 {
-	int x,
-	int y
+	int x;
+	int y;
 } Pos;
 
+//Faire une classe autour n'est juste qu'un wrapper inutile
 class componentPosition : public Component
 {
 public:
@@ -31,17 +33,18 @@ public:
 
 // DIMENSION
 
-typedef struct ComponentDimension
+typedef struct ComponentDimension// : public Component
 {
-	int width,
-	int height
+	int width;
+	int height;
 } Dim;
 
+//Faire une classe autour n'est juste qu'un wrapper inutile
 class componentDimension : public Component
 {
 public:
 	componentDimension(ID const& id_g, int const& width_g, int const& height_g);
 	Dim dimension;
-};
+}; 
 
 // END DIMENSION

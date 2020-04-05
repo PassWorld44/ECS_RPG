@@ -16,7 +16,8 @@ template<typename T>
 void inline Entity::removeComponent()
 {
 	std::map<const char*,std::unique_ptr<Component>>::iterator it = listComponent.find(typeid(T));
-	listComponent.erase(it);
+	if(it != this->listComponent.end())
+		listComponent.erase(it);
 }
 
 template<typename T>
