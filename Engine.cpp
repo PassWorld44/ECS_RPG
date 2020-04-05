@@ -28,19 +28,37 @@ ID Engine::addEntity() //creating a new entity by inserting it
 	ID id = createID();
 
 	this->listEntity.insert(
-		std::pair<ID, std::unique_ptr<Entity>>{ id, std::make_unique<Entity>(id) });
+		std::pair<ID, Entity>{ id, Entity{ id } });
 
 	return id;
+}
+
+std::ostream& Engine::sortie(std::ostream& output) const 
+{
+	output << "Engine :" << std::endl;
+	for (auto it  = listEntity.begin() ; it != listEntity.end() ; it++)
+	{
+		output << (*it).second;
+	}
+	output << std::endl;
+
+	return output;
 }
 
 template<typename ComponentChild, typename... Args>
 void Engine::addComponent(const ID& entity, const ComponentChild& comp, Args&&... args)
 {
-	this->listEntity[entity]->addComponent<ComponentChild>(entity,args...);
+	this->listEntity[entity].addComponent<ComponentChild>(entity,args...);
 }
 
 template<typename ComponentChild>
 void Engine::removeComponent(const ID& entity)
 {
-	this->listEntity[entity]->removeComponent<ComponentChild>();
+	this->listEntity[entity].removeComponent<ComponentChild>();
+}
+
+std::ostream& operator<<(std::ostream& output, const Engine& e)
+{
+	e.sortie(output);
+	return output;
 }

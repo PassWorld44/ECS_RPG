@@ -9,7 +9,7 @@
 class Engine
 {
 private:
-	std::map<ID, std::unique_ptr<Entity>> listEntity;
+	std::map<ID, Entity> listEntity;
 	std::vector<std::unique_ptr<System>> listSystems;
 
 	bool is_continuing; //for the main loop
@@ -29,6 +29,8 @@ public:
 	template<typename ComponentChild>
 	void removeComponent(const ID& entity);
 
-
+	std::ostream& sortie(std::ostream& output) const;
 };
+
+std::ostream& operator<<(std::ostream& output, const Engine& e);
 
