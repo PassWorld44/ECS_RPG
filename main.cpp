@@ -3,5 +3,9 @@
 
 int main()
 {
+	std::cout << "Hello world !" << std::endl;
+
+	Engine e;
+
 	return 0;
 }
