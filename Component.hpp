@@ -15,7 +15,6 @@ public:
 
 // POSITION
 
-//Faire une classe autour n'est juste qu'un wrapper inutile
 class componentPosition : public Component
 {
 public:
@@ -28,7 +27,6 @@ public:
 
 // DIMENSION
 
-//Faire une classe autour n'est juste qu'un wrapper inutile
 class componentDimension : public Component
 {
 public:
