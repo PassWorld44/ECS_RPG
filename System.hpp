@@ -16,6 +16,7 @@ public:
 	void addComponent(Component& conp);
 };
 
+
 class InputSystem : public System
 {
 private:

@@ -5,3 +5,4 @@
 #include <map> // standard map
 #include <memory> // standard unique_ptr
 #include <functional>
+#include <typeinfo> // function typeid()

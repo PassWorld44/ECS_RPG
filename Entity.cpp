@@ -3,7 +3,7 @@
 Entity::Entity(ID const& id_g)
 :id(id_g)
 {
-	std::cout << "Creation de l'Entity ID : " << id << std::endl;
+	std::cout << "Creation de l'Entity ID : " << this->id << std::endl;
 }
 
 std::ostream& Entity::sortie(std::ostream& output) const
@@ -21,13 +21,13 @@ std::ostream& Entity::sortie(std::ostream& output) const
 template<typename T, typename ...Args>
 void Entity::addComponent(Args&& ...args)
 {
-	listComponent.emplace(std::pair<typeid(T),std::make_unique<T>(id,args...)>);
+	listComponent.emplace(std::pair<const char*,std::unique_ptr<T>>{typeid(T).name(),std::make_unique<T>(this->id,args...)});
 }
 
 template<typename T> 
 void inline Entity::removeComponent()
 {
-	std::map<const char*,std::unique_ptr<Component>>::iterator it = listComponent.find(typeid(T));
+	std::map<const char*,std::unique_ptr<Component>>::iterator it = listComponent.find(typeid(T).name());
 	if(it != this->listComponent.end())
 		listComponent.erase(it);
 }
@@ -35,7 +35,7 @@ void inline Entity::removeComponent()
 template<typename T>
 T& Entity::getComponent() const
 {
-	std::map<const char*, std::unique_ptr<Component>>::iterator it = listComponent.find(typeid(T));
+	std::map<const char*, std::unique_ptr<Component>>::iterator it = listComponent.find(typeid(T).name());
 	return &(it->second);
 }
 
