@@ -11,7 +11,7 @@ Component::Component(ID const& id_g)
 // CONSTRUCTOR OF POSITION
 
 componentPosition::componentPosition(ID const& id_g, int const& x_g, int const& y_g)
-:Component(id_g),position{x_g,y_g}
+:Component(id_g),x(x_g),y(y_g)
 {
 	std::cout << "Position -> {Entity : " << id_g << "}" << std::endl;
 }
@@ -19,7 +19,7 @@ componentPosition::componentPosition(ID const& id_g, int const& x_g, int const& 
 // CONSTRUCTOR OF DIMENSION
 
 componentDimension::componentDimension(ID const& id_g, int const& width_g, int const& height_g)
-:Component(id_g),dimension{width_g,height_g}
+:Component(id_g),width(width_g),height(height_g)
 {
 	std::cout << "Dimension -> {Entity : " << id_g << "}" << std::endl;
 }
