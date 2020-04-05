@@ -11,7 +11,7 @@ private:
 public:
 	virtual void update() = 0; //the wole fonc
 
-	void addComponent(Component& conp);
+	void addComponent(Component& comp);
 }; 
 
 
