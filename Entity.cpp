@@ -21,7 +21,7 @@ void inline Entity::removeComponent()
 }
 
 template<typename T>
-T* Entity::getComponent() const
+T& Entity::getComponent() const
 {
 	std::map<const char*, std::unique_ptr<Component>>::iterator it = listComponent.find(typeid(T));
 	return &(it->second);
