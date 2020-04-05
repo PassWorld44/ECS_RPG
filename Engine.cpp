@@ -36,7 +36,7 @@ ID Engine::addEntity() //creating a new entity by inserting it
 template<typename ComponentChild, typename... Args>
 void Engine::addComponent(const ID& entity, const ComponentChild& comp, Args&&... args)
 {
-	this->listEntity[entity]->addComponent<ComponentChild>(Args);
+	this->listEntity[entity]->addComponent<ComponentChild>(entity,args...);
 }
 
 template<typename ComponentChild>

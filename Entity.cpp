@@ -9,7 +9,7 @@ Entity::Entity(ID const& id_g)
 template<typename T, typename ...Args>
 void Entity::addComponent(Args&& ...args)
 {
-	listComponent.emplace(std::pair<typeid(T),std::make_unique<T>(id,args)>);
+	listComponent.emplace(std::pair<typeid(T),std::make_unique<T>(id,args...)>);
 }
 
 template<typename T> 
