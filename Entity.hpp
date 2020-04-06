@@ -22,8 +22,10 @@ public:
 	template<typename T>
 	T& getComponent() const;  //pour l'init
 
-	//pareil ici faut trouver un moyen de sort les components par type si y'en a 1 max de chaque type
-	//c'est ce que une map fait, elle sort en fonction du 1er arg :kappa:
+	std::ostream& sortie(std::ostream& output) const;
 };
+
+std::ostream& operator<<(std::ostream& output, const Entity& ent);
+
 
 
