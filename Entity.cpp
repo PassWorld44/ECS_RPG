@@ -12,7 +12,7 @@ std::ostream& Entity::sortie(std::ostream& output) const
 	for (auto it = listComponent.begin();
 		it != listComponent.end() ; it++ )
 	{
-		output << (*it).first << " " << (*it).second << std::endl;
+		output << it->first << " " << *(it->second) << std::endl;
 	}
 
 	return output;
