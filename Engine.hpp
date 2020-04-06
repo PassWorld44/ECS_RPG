@@ -24,7 +24,7 @@ public:
 	ID addEntity();
 
 	template<typename ComponentChild, typename... Args>
-	void addComponent(const ID& entity, const ComponentChild& comp,Args&&... args);
+	void addComponent(const ID& entity, Args&&... args);
 
 	template<typename ComponentChild>
 	void removeComponent(const ID& entity);
