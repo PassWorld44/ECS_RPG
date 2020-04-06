@@ -46,7 +46,7 @@ std::ostream& Engine::sortie(std::ostream& output) const
 }
 
 template<typename ComponentChild, typename... Args>
-void Engine::addComponent(const ID& entity, const ComponentChild& comp, Args&&... args)
+void Engine::addComponent(const ID& entity, Args&&... args)
 {
 	this->listEntity[entity].addComponent<ComponentChild>(entity,args...);
 }
