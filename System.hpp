@@ -16,7 +16,7 @@ public:
 	void addComponent(Component& conp);
 };
 
-
+// Je sais pas si on devrai commencer par celui la XD
 class InputSystem : public System
 {
 private:
