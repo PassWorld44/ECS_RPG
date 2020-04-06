@@ -29,7 +29,7 @@ ID Engine::addEntity() //creating a new entity by inserting it
 	this->listEntity.insert(
 		std::pair<ID, Entity>{ id, Entity{ id } });
 
-	this->listEntity.insert(std::pair<ID, std::unique_ptr<Entity>>{ id, std::make_unique<Entity>(id) });
+	this->listEntity.insert(std::pair<ID, Entity>{ id, Entity{ id } });
 
 	return id;
 }
@@ -39,7 +39,7 @@ std::ostream& Engine::sortie(std::ostream& output) const
 	output << "Engine :" << std::endl;
 	for (auto it  = listEntity.begin() ; it != listEntity.end() ; it++)
 	{
-		output << (*it).second;
+		output << it->second;
 	}
 	output << std::endl;
 
