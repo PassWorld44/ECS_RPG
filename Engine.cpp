@@ -26,8 +26,7 @@ Engine::Engine()
 ID Engine::addEntity() //creating a new entity by inserting it
 {
 	ID id = createID();
-	this->listEntity.insert(
-		std::pair<ID, Entity>{ id, Entity{ id } });
+	this->listEntity.insert(std::pair<ID, Entity>{ id, Entity{ id } });
 
 	this->listEntity.insert(std::pair<ID, Entity>{ id, Entity{ id } });
 
