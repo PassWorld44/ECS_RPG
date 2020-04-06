@@ -36,9 +36,9 @@ ID Engine::addEntity() //creating a new entity by inserting it
 std::ostream& Engine::sortie(std::ostream& output) const 
 {
 	output << "Engine :" << std::endl;
-	for (std::map<ID, Entity>::iterator it  = listEntity.begin() ; it != listEntity.end() ; it++)
+	for (auto it  = listEntity.begin() ; it != listEntity.end() ; it++)
 	{
-		output << *it->second;
+		output << it->second;
 	}
 	output << std::endl;
 
