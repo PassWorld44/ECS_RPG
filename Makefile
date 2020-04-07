@@ -14,3 +14,4 @@ $(EXEC) : $(OBJ)
 .PHONY :
 
 clean : .PHONY
+	rm -f *.o $(EXEC)

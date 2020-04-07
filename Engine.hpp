@@ -34,3 +34,14 @@ public:
 
 std::ostream& operator<<(std::ostream& output, const Engine& e);
 
+template<typename ComponentChild, typename... Args>
+void Engine::addComponent(const ID& entity, Args&&... args)
+{
+	this->listEntity[entity].addComponent<ComponentChild>(entity, args...);
+}
+
+template<typename ComponentChild>
+void Engine::removeComponent(const ID& entity)
+{
+	this->listEntity[entity].removeComponent<ComponentChild>();
+}
