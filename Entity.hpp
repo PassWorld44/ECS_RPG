@@ -15,8 +15,8 @@ public:
 	Entity(ID const& id_g);
 	~Entity() { std::cout << "Destroyed Entity => ID : " << id << std::endl; }
 
-	template<typename T>
-	void addComponent(T const& component);
+	template<typename T, typename... Args>
+	void addComponent(ID const& id, Args&&... args);
 
 	template<typename T> void removeComponent();
 
@@ -28,10 +28,10 @@ public:
 
 std::ostream& operator<<(std::ostream& output, const Entity& ent);
 
-template<typename T>
-void Entity::addComponent(T const& component)
+template<typename T, typename... Args>
+void Entity::addComponent(ID const& id, Args&&... args)
 {
-	listComponent.emplace(std::pair<const char*,std::unique_ptr<T>>{typeid(T).name(),std::make_unique<T>(component)});
+	listComponent.emplace(std::pair<const char*,std::unique_ptr<T>>{typeid(T).name(),std::move(std::make_unique<T>({id,args...}))});
 }
 
 template<typename T> 
