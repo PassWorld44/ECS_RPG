@@ -24,10 +24,10 @@ public:
 	ID addEntity();
 
 	template<typename ComponentChild, typename... Args>
-	void addComponent(const ID& entity, Args&&... args);
+	void addComponent(ID entity, Args&&... args);
 
 	template<typename ComponentChild>
-	void removeComponent(const ID& entity);
+	void removeComponent(ID entity);
 
 	std::ostream& sortie(std::ostream& output) const;
 };
@@ -35,13 +35,13 @@ public:
 std::ostream& operator<<(std::ostream& output, const Engine& e);
 
 template<typename ComponentChild, typename... Args>
-void Engine::addComponent(const ID& entity, Args&&... args)
+void Engine::addComponent(ID entity, Args&&... args)
 {
-	this->listEntity[entity].addComponent<ComponentChild>(entity, args...);
+	this->listEntity.at(entity).addComponent<ComponentChild>(entity, args...);
 }
 
 template<typename ComponentChild>
-void Engine::removeComponent(const ID& entity)
+void Engine::removeComponent(ID entity)
 {
-	this->listEntity[entity].removeComponent<ComponentChild>();
+	this->listEntity.at(entity).removeComponent<ComponentChild>();
 }
