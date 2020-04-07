@@ -5,7 +5,7 @@
 Component::Component(ID const& id_g)
 :idEntity(id_g)
 {
-	std::cout << "Creation d'un Component : " << std::endl;
+	std::cout << "Creation d'un Component : ";
 }
 
 std::ostream& Component::sortie(std::ostream& output) const

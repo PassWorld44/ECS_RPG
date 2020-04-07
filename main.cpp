@@ -8,10 +8,9 @@ int main()
 	RectTestListID.push_back(e.addEntity());
 	e.addComponent<componentPosition>(RectTestListID[0],0,0);
 	e.addComponent<componentDimension>(RectTestListID[0],100,100);
-
-	ID ent1 = e.addEntity();
-
-	e.addComponent<componentPosition>(ent1, 0, 0);
+	RectTestListID.push_back(e.addEntity());
+	e.addComponent<componentPosition>(RectTestListID[1],100,100);
+	e.addComponent<componentDimension>(RectTestListID[1],100,100);
 
 	return 0;
 }
