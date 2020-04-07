@@ -9,5 +9,9 @@ int main()
 	e.addComponent<componentPosition>(RectTestListID[0],0,0);
 	e.addComponent<componentDimension>(RectTestListID[0],100,100);
 
+	ID ent1 = e.addEntity();
+
+	e.addComponent<componentPosition>(ent1, 0, 0);
+
 	return 0;
 }
