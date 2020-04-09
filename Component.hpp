@@ -21,6 +21,24 @@ public:
 
 std::ostream& operator<<(std::ostream& output, const Component& comp);
 
+
+template<typename Comp>
+inline IDTypeComponent Component::getIDType()
+{
+	if (!std::is_base_of_v<Component, Comp>)
+	{
+		throw std::invalid_argument("arg type must be derived from Component");
+	}
+	if (std::is_same_v<Component, Comp>)
+	{
+		throw std::invalid_argument("arg type must be a child class from component");
+	}
+
+	static const IDTypeComponent id = m_maxId++; 
+	//this line executs only if id isn't inisalised;
+	return id;
+}
+
 // POSITION
 
 class componentPosition : public Component
@@ -57,18 +75,3 @@ public:
 
 };
 
-template<typename Comp>
-inline IDTypeComponent Component::getIDType()
-{
-	if (!std::is_base_of_v<Component, Comp>)
-	{
-		throw std::invalid_argument("arg type must be derived from Component");
-	}
-	if (std::is_same_v<Component, Comp>)
-	{
-		throw std::invalid_argument("arg type must be a child class from component");
-	}
-
-	static const IDTypeComponent id = m_maxId++;
-	return id;
-}

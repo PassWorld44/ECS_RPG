@@ -1,9 +1,10 @@
 #include "System.hpp"
-/*
+
 System::~System()
 {
 }
-*/
+
+
 void System::addComponent(Component& comp)
 {
 	if (!(this->listComponent.emplace(comp.getID(),std::vector<std::reference_wrapper<Component>>{ comp })).second)

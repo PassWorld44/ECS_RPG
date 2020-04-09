@@ -39,8 +39,9 @@ void Entity::addComponent(ID const& id, Args&&... args)
 template<typename T> 
 void Entity::removeComponent()
 {
-	std::map<IDTypeComponent,std::unique_ptr<Component>>::iterator it = 
+	std::map<IDTypeComponent,std::unique_ptr<Component>>::iterator it = \
 		listComponent.find(Component::getIDType<Component>());
+
 	if(it != this->listComponent.end())
 		listComponent.erase(it);
 }
@@ -48,7 +49,8 @@ void Entity::removeComponent()
 template<typename T>
 T& Entity::getComponent() const
 {
-	std::map<IDTypeComponent, std::unique_ptr<Component>>::iterator it = 
+	std::map<IDTypeComponent, std::unique_ptr<Component>>::iterator it = \
 		listComponent.find(Component::getIDType<Component>());
+
 	return &(it->second);
 }

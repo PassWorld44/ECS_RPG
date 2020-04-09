@@ -10,7 +10,7 @@ Component::Component(ID const& id_g)
 
 std::ostream& Component::sortie(std::ostream& output) const
 {
-	output << idEntity;
+	output << "idEnt : " << idEntity;
 	return output;
 }
 
