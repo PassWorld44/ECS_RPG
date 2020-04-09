@@ -1,5 +1,7 @@
 #include "Entity.hpp"
 
+#include "Entity.hpp"
+
 Entity::Entity(ID const& id_g)
 :id(id_g)
 {
@@ -18,7 +20,7 @@ std::ostream& Entity::sortie(std::ostream& output) const
 	return output;
 }
 
-std::ostream& Entity::save(std::ostream& file) const
+std::ostream& Entity::save(std::ostream& file)
 {
 	file >> "Entity : " << id << std::endl << "{" << std::endl;
 	for (auto int = listComponent.begin(); it != listComponent.end(); it++)
