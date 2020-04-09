@@ -7,3 +7,4 @@
 #include <functional>
 #include <typeinfo> // function typeid()
 #include <stdexcept>
+//#include "SDLDisplay.hpp" // display functions using SDL API
