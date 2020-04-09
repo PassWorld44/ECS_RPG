@@ -17,6 +17,7 @@ public:
 	void addComponent(Component& comp);
 };
 
+/*
 class DisplaySystem : public System, public SDLDisplay
 {
 public:
@@ -27,3 +28,4 @@ public:
 	void update() override;
 private:
 };
+*/
