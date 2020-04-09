@@ -12,5 +12,7 @@ int main()
 	e.addComponent<componentPosition>(RectTestListID[1],100,100);
 	e.addComponent<componentDimension>(RectTestListID[1],100,100);
 
+	std::cout << e << std::endl;
+
 	return 0;
 }

@@ -10,7 +10,7 @@ class Entity
 {
 private:
 	ID id;
-	std::map<const char*,std::unique_ptr<Component>> listComponent;
+	std::map<IDTypeComponent,std::unique_ptr<Component>> listComponent;
 public:
 	Entity(ID const& id_g);
 	~Entity() { std::cout << "Destroyed Entity => ID : " << id << std::endl; }
@@ -31,13 +31,14 @@ std::ostream& operator<<(std::ostream& output, const Entity& ent);
 template<typename T, typename... Args>
 void Entity::addComponent(ID const& id, Args&&... args)
 {
-	listComponent.emplace(std::pair<const char*,std::unique_ptr<T>>{typeid(T).name(), std::make_unique<T>(id,args...)});
+	listComponent.emplace(Component::getIDType<T>(), std::make_unique<T>(id,args...));
 }
 
 template<typename T> 
 void Entity::removeComponent()
 {
-	std::map<const char*,std::unique_ptr<Component>>::iterator it = listComponent.find(typeid(T).name());
+	std::map<IDTypeComponent,std::unique_ptr<Component>>::iterator it = 
+		listComponent.find(Component::getIDType<Component>());
 	if(it != this->listComponent.end())
 		listComponent.erase(it);
 }
@@ -45,6 +46,7 @@ void Entity::removeComponent()
 template<typename T>
 T& Entity::getComponent() const
 {
-	std::map<const char*, std::unique_ptr<Component>>::iterator it = listComponent.find(typeid(T).name());
+	std::map<IDTypeComponent, std::unique_ptr<Component>>::iterator it = 
+		listComponent.find(Component::getIDType<Component>());
 	return &(it->second);
 }
