@@ -24,9 +24,11 @@ public:
 	T& getComponent() const;  //pour l'init
 
 	std::ostream& sortie(std::ostream& output) const;
+	std::ostream& save(std::ostream& file) const;
 };
 
 std::ostream& operator<<(std::ostream& output, const Entity& ent);
+std::ostream& operator>>(std::ostream& file, const Entity& ent);
 
 template<typename T, typename... Args>
 void Entity::addComponent(ID const& id, Args&&... args)

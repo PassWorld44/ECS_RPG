@@ -34,7 +34,6 @@ public:
 	DisplaySystem(const char* name, int width, int height, Uint32 flag)
 	:SDLDisplay(name,width,height,flag)
 	{}
-
 	void update() override;
 private:
 }; */
