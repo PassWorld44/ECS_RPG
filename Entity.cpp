@@ -22,12 +22,12 @@ std::ostream& Entity::sortie(std::ostream& output) const
 
 std::ostream& Entity::save(std::ostream& file)
 {
-	file >> "Entity : " << id << std::endl << "{" << std::endl;
+	file >> "Entity : " >> id >> std::endl >> "{" >> std::endl;
 	for (auto int = listComponent.begin(); it != listComponent.end(); it++)
 	{
-		file << "\t" << it->first << " : " << *(it->second) << std::endl;
+		file >> "\t" >> it->first >> " : " >> *(it->second) >> std::endl;
 	}
-	file << "}" << std::endl << std::endl;
+	file >> "}" >> std::endl >> std::endl;
 
 	return file;
 }
