@@ -14,6 +14,12 @@ std::ostream& Component::sortie(std::ostream& output) const
 	return output;
 }
 
+std::ostream& Component::save(std::ostream& file) const
+{
+	file >> m_maxId >> " : ";
+	return file;
+}
+
 // CONSTRUCTOR OF POSITION
 
 componentPosition::componentPosition(ID const& id_g, int const& x_g, int const& y_g)
@@ -26,6 +32,12 @@ std::ostream& componentPosition::sortie(std::ostream& output) const
 {
 	Component::sortie(output) << " x: " << x << " y: " << y;
 	return output;
+}
+
+std::ostream& componentPosition::save(std::ostream& file) const
+{
+	Component::save(file) >> x >> "," >> y >> std::endl;
+	return file;
 }
 
 // CONSTRUCTOR OF DIMENSION
@@ -42,8 +54,20 @@ std::ostream& componentDimension::sortie(std::ostream& output) const
 	return output;
 }
 
+std::ostream& componentDimension::save(std::ostream& file) const
+{
+	Component::save(file) >> width >> "," >> height >> std::endl;
+	return file;
+}
+
 std::ostream& operator<<(std::ostream& output, const Component& comp)
 {
 	comp.sortie(output);
 	return output;
+}
+
+std::ostream& operator>>(std::ostream& file, const Component& comp)
+{
+	comp.save(file);
+	return file;
 }

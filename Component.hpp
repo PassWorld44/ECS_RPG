@@ -15,11 +15,13 @@ public:
 	ID getID() const { return idEntity; }
 
 	virtual std::ostream& sortie(std::ostream& output) const;
+	virtual std::ostream& save(std::ostream& file) const;
 
 	template <typename Comp> static IDTypeComponent getIDType();
 };
 
 std::ostream& operator<<(std::ostream& output, const Component& comp);
+std::ostream& operator>>(std::ostream& file, const Component& comp);
 
 
 template<typename Comp>
@@ -49,6 +51,7 @@ public:
 	double y;
 
 	virtual std::ostream& sortie(std::ostream& output) const override;
+	virtual std::ostream& save(std::ostream& file) const override;
 };
 
 // END POSITION
@@ -63,6 +66,7 @@ public:
 	double height;
 
 	virtual std::ostream& sortie(std::ostream& output) const override;
+	virtual std::ostream& save(std::ostream& file) const override;
 }; 
 
 // END DIMENSION
