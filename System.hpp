@@ -7,14 +7,26 @@
 class System
 {
 private:
-	std::map<ID, std::vector<std::reference_wrapper<Component>>> listComponent;
+	std::map<ID, std::map<IDTypeComponent, std::reference_wrapper<Component>>> listComponent;
 public:
 	virtual ~System();
 
 	virtual void update() = 0; //the wole fonc
 
-	void addComponent(Component& comp);
+	template <typename CompT>
+	void addComponent(CompT& comp);
 };
+
+template <typename CompT>
+void System::addComponent(CompT& comp)
+{
+	auto a = this->listComponent.emplace(comp.getID(), std::map<IDTypeComponent, std::reference_wrapper<Component>>{});
+	if (a.second)
+		//this means compo.get_id() isn't aleady a key
+	{
+		this->listComponent.at(comp.getID()).emplace(Component::getIDType<CompT>(), comp);
+	}
+}
 
 /* class DisplaySystem : public System, public SDLDisplay
 {
