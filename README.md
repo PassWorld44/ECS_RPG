@@ -1,2 +1,2 @@
 # ECS_RPG
-Un pitit moteur de jeu
+Un petit test d'implementation de moteur de jeu
